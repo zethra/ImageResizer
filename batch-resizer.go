@@ -15,7 +15,7 @@ import (
 )
 
 var (
-	maxSizeFlag = flag.String("m", "", "max demensions \"XxY\" or max demension X or Y")
+	maxSizeFlag = flag.String("m", "", "max demension X or Y")
 	maxSize uint
 	currentFile string
 	img image.Image
@@ -34,7 +34,7 @@ func main() {
 	os.Mkdir("in", 0775)
 	os.Mkdir("out", 0775)
 	os.Mkdir("done", 0775)
-
+	fmt.Println("Batch Image Resizer started\n")
 	for {
 		files, err := ioutil.ReadDir("in")
 		if (err != nil) {
