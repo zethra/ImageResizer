@@ -24,7 +24,7 @@ var filePath, outputPath string
 var dimension [2]int
 var outputFlag = flag.String("o", "", "output file name")
 var sizeFlag = flag.String("s", "", "demensions \"XxY\"")
-var minSizeFlag = flag.String("m", "", "max demensions \"XxY\" or max demension X or Y")
+var maxSizeFlag = flag.String("m", "", "max demensions \"XxY\" or max demension X or Y")
 
 func main() {
 	var err error
@@ -45,14 +45,14 @@ func main() {
 	} else {
 		outputPath = "output." + fileExt
 	}
-	if (*sizeFlag != "" && *minSizeFlag != "") {
+	if (*sizeFlag != "" && *maxSizeFlag != "") {
 		fmt.Println("both s and m flags cannot be used")
 		os.Exit(-1)
 	}
-	if (*minSizeFlag != "") {
-		dims := strings.Split(*minSizeFlag, "x")
-		if (*minSizeFlag != "" && len(dims) == 1) {
-			dims := strings.Split(*minSizeFlag, "x")
+	if (*maxSizeFlag != "") {
+		dims := strings.Split(*maxSizeFlag, "x")
+		if (*maxSizeFlag != "" && len(dims) == 1) {
+			dims := strings.Split(*maxSizeFlag, "x")
 			dimension[0], err = strconv.Atoi(dims[0])
 			if (err != nil) {
 				fmt.Println("Invalid demesions given")
